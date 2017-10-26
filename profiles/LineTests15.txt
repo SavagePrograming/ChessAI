@@ -1,0 +1,288 @@
+Timer unit: 1e-06 s
+
+Total time: 14.2161 s
+File: Square.py
+Function: check at line 102
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   102                                               @profile
+   103                                               def check(self, board):
+   104                                           
+   105                                                   # if self.rule_num == 0:
+   106                                                   # pass
+   107                                                   #==================================================================================
+   108                                                   #For pawn
+   109                                                   #==================================================================================
+   110     53888       519564      9.6      3.7          if self.rule_num == 1:
+   111     13472       126292      9.4      0.9              append = list.append
+   112     13472       123283      9.2      0.9              p_m = []
+   113     13472       125380      9.3      0.9              x = self.x
+   114     13472       125051      9.3      0.9              y = self.y
+   115     13472       123845      9.2      0.9              b = board.b
+   116     13472       124611      9.2      0.9              color = self.color
+   117     13472       125325      9.3      0.9              if color == 'w':
+   118      6736        61657      9.2      0.4                  test = True
+   119      6736        62267      9.2      0.4                  if not x == 7:
+   120      6736        64567      9.6      0.5                      sq = b[(x + 1)][y]
+   121      6736        62922      9.3      0.4                      if sq.image == 0:
+   122      6551        69031     10.5      0.5                          append(p_m, [x + 1, y])
+   123                                                               else:
+   124       185         1727      9.3      0.0                          test = False
+   125      6736        62653      9.3      0.4                      if not y == 7:
+   126      5894        56248      9.5      0.4                          sq = b[x + 1][y + 1]
+   127      5894        56944      9.7      0.4                          if not sq.image == 0 and not sq.color == color:
+   128        14          140     10.0      0.0                              append(p_m, [x + 1, y + 1])
+   129      6736        62451      9.3      0.4                      if not y == 0:
+   130      5894        56693      9.6      0.4                          sq = b[x + 1][y - 1]
+   131      5894        56982      9.7      0.4                          if not sq.image == 0 and not sq.color == color:
+   132        14          156     11.1      0.0                              append(p_m, ([x + 1, y - 1]))
+   133                                           
+   134      6736        62590      9.3      0.4                  if x == 1:
+   135      6064        57716      9.5      0.4                      sq = b[x + 2][y]
+   136      6064        57384      9.5      0.4                      if not sq.image == 0:
+   137                                                                   test = False
+   138                                                           else:
+   139       672         6259      9.3      0.0                      test = False
+   140                                           
+   141      6736        61964      9.2      0.4                  if test:
+   142      5895        60698     10.3      0.4                      append(p_m, ([x + 2, y]))
+   143      6736        63246      9.4      0.4                  if x == 7:
+   144                                                               self.image = Images.White.queen
+   145                                                               self.image_loc = 'pictures/queen.png'
+   146                                                               self.rule_num = 5
+   147     13472       126966      9.4      0.9              if color == 'b':
+   148      6736        62282      9.2      0.4                  test = True
+   149      6736        62427      9.3      0.4                  if not x == 0:
+   150      6736        64799      9.6      0.5                      sq = b[x - 1][y]
+   151      6736        63996      9.5      0.5                      if sq.image == 0:
+   152      6560        70117     10.7      0.5                          append(p_m, ([x - 1, y]))
+   153                                                               else:
+   154       176         1647      9.4      0.0                          test = False
+   155                                           
+   156      6736        63044      9.4      0.4                      if not y == 7:
+   157      5894        57049      9.7      0.4                          sq = b[x - 1][y + 1]
+   158      5894        57644      9.8      0.4                          if not sq.image == 0 and not sq.color == color:
+   159        14          147     10.5      0.0                              append(p_m, ([x - 1, y + 1]))
+   160                                           
+   161      6736        62781      9.3      0.4                      if not y == 0:
+   162      5894        56783      9.6      0.4                          sq = b[x - 1][y - 1]
+   163      5894        57723      9.8      0.4                          if not sq.image == 0 and not sq.color == color:
+   164        14          145     10.4      0.0                              append(p_m, ([x - 1, y - 1]))
+   165                                           
+   166      6736        63289      9.4      0.4                  if x == 6:
+   167      6096        58463      9.6      0.4                      sq = b[x - 2][y]
+   168      6096        58559      9.6      0.4                      if not sq.image == 0:
+   169                                                                   test = False
+   170                                                           else:
+   171       640         5922      9.3      0.0                      test = False
+   172      6736        62456      9.3      0.4                  if test:
+   173      5936        62072     10.5      0.4                      append(p_m, ([x - 2, y]))
+   174      6736        63710      9.5      0.4                  if x == 0:
+   175                                                               self.image = Images.Black.queen
+   176                                                               self.image_loc = 'pictures/bqueen.png'
+   177                                                               self.rule_num = 5
+   178     13472       138080     10.2      1.0              self.p_m = p_m
+   179                                                   #==================================================================================
+   180                                                   #For rook
+   181                                                   #==================================================================================
+   182     40416       383651      9.5      2.7          elif self.rule_num == 2:
+   183      3368        31586      9.4      0.2              p_m = []
+   184      3368        31898      9.5      0.2              x = self.x
+   185      3368        31772      9.4      0.2              y = self.y
+   186      3368        31893      9.5      0.2              b = board.b
+   187      3368        31775      9.4      0.2              color = self.color
+   188                                           
+   189      3368        33006      9.8      0.2              def append_2_x(self, item):
+   190                                                           list.append(self, [ x , item])
+   191                                           
+   192      3368        32557      9.7      0.2              def append_2_y(self, item):
+   193                                                           list.append(self, [item, y])
+   194                                           
+   195      3368        32685      9.7      0.2              def test4(number):
+   196                                                           test = True
+   197                                                           for square in b[x]:
+   198                                                               if (y > square.y > number or y < square.y < number) and not square.image == 0:
+   199                                                                   test = False
+   200                                                                   break
+   201                                                           return test and (b[x][number].image == 0 or not b[x][number].color == color)
+   202                                           
+   203      3368        32893      9.8      0.2              def test3(number):
+   204                                                           test = True
+   205                                                           for row in b:
+   206                                                               if (x > row[y].x > number or x < row[y].x < number) and not row[y].image == 0:
+   207                                                                   test = False
+   208                                                                   break
+   209                                                           return test and (b[number][y].image == 0 or not b[number][y].color == color)
+   210                                           
+   211      3368       408832    121.4      2.9              numbers = filter(test4, xrange(0, 8))
+   212      3368        42357     12.6      0.3              map(append_2_x, [p_m] * len(numbers), numbers)
+   213                                           
+   214      3368       454799    135.0      3.2              numbers = filter(test3, xrange(0, 8))
+   215      3368        41349     12.3      0.3              map(append_2_y, [p_m] * len(numbers), numbers)
+   216      3368        34336     10.2      0.2              self.p_m = p_m
+   217                                           
+   218                                                   #==================================================================================
+   219                                                   #For Knight
+   220                                                   #==================================================================================
+   221     37048       350857      9.5      2.5          elif self.rule_num == 3:
+   222      3368        31627      9.4      0.2              p_m = []
+   223      3368        32161      9.5      0.2              x = self.x
+   224      3368        31811      9.4      0.2              y = self.y
+   225      3368        31831      9.5      0.2              b = board.b
+   226      3368        31976      9.5      0.2              color = self.color
+   227      3368        31422      9.3      0.2              List_ = []
+   228                                           
+   229      3368        44686     13.3      0.3              map(func.append_6, [List_] * 8, [b] * 8, [x] * 8, [y] * 8, [2, 2, -2, -2, 1, 1, -1, -1],
+   230      3368       128028     38.0      0.9                  [1, -1, 1, -1, 2, -2, 2, -2], [color] * 8)
+   231      3368       141669     42.1      1.0              numbers = filter(filterer, List_)
+   232      3368        70897     21.1      0.5              map(func.append_2by2, [p_m] * len(numbers), numbers)
+   233                                           
+   234      3368        34935     10.4      0.2              self.p_m = p_m
+   235                                                   #==================================================================================
+   236                                                   #For Bishup
+   237                                                   #==================================================================================
+   238     33680       322122      9.6      2.3          elif self.rule_num == 4:
+   239      3368        31650      9.4      0.2              p_m = []
+   240      3368        32102      9.5      0.2              x = self.x
+   241      3368        31821      9.4      0.2              y = self.y
+   242      3368        31806      9.4      0.2              b = board.b
+   243      3368        31775      9.4      0.2              color = self.color
+   244      3368        31783      9.4      0.2              List = []
+   245      3368        31478      9.3      0.2              List_ = []
+   246      3368        38225     11.3      0.3              map(func.append_5, [List_] * 28,
+   247      3368        35026     10.4      0.2                  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+   248      3368        34809     10.3      0.2                  [1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1],
+   249      3368        38148     11.3      0.3                  [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7], [x] * 28,
+   250      3368       310696     92.2      2.2                  [y] * 28)
+   251                                           
+   252      3368       302294     89.8      2.1              numbers = filter(test5, List_)
+   253      3368        33752     10.0      0.2              num = len(numbers)
+   254      3368       128729     38.2      0.9              map(append_Bishup, [List] * num, numbers, [b] * num)
+   255                                           
+   256      3368        34327     10.2      0.2              def test6(square):
+   257                                                           xnum = (square.x - x) / abs(square.x - x)
+   258                                                           ynum = (square.y - y) / abs(square.y - y)
+   259                                                           test = True
+   260                                                           if not abs(square.x - x) == 0:
+   261                                                               num = abs(square.x - x)
+   262                                                           else:
+   263                                                               num = abs(square.y - y)
+   264                                                           for number in xrange(1, num):
+   265                                                               if not b[x + xnum * number][y + ynum * number].image == 0:
+   266                                                                   test = False
+   267                                                           return test and not square == 0 and (square.image == 0 or not square.color == color)
+   268                                           
+   269      3368       387610    115.1      2.7              numbers = filter(test6, List)
+   270                                           
+   271      3368        47125     14.0      0.3              map(append_SQ, [p_m] * len(numbers), numbers)
+   272                                           
+   273      3368        35032     10.4      0.2              self.p_m = p_m
+   274                                                   #==================================================================================
+   275                                                   #For Queen
+   276                                                   #==================================================================================
+   277     30312       291921      9.6      2.1          elif self.rule_num == 5:
+   278                                                       #append = list.append
+   279      1684        15939      9.5      0.1              p_m = []
+   280      1684        16253      9.7      0.1              x = self.x
+   281      1684        16089      9.6      0.1              y = self.y
+   282      1684        16042      9.5      0.1              b = board.b
+   283      1684        16188      9.6      0.1              color = self.color
+   284      1684        16010      9.5      0.1              List = []
+   285      1684        15961      9.5      0.1              List_ = []
+   286      1684        19092     11.3      0.1              map(func.append_5, [List_] * 56,
+   287      1684        16755      9.9      0.1                  [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0,
+   288      1684        18244     10.8      0.1                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+   289      1684        16670      9.9      0.1                  [-1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1,
+   290      1684        17911     10.6      0.1                   -1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+   291      1684        16981     10.1      0.1                  [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1,
+   292      1684       301453    179.0      2.1                   2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7], [x] * 56, [y] * 56)
+   293                                           
+   294      1684       286437    170.1      2.0              numbers = filter(test5, List_)
+   295      1684        16946     10.1      0.1              num = len(numbers)
+   296      1684       146653     87.1      1.0              map(append_Bishup, [List] * num, numbers, [b] * num)
+   297      1684        88869     52.8      0.6              @profile
+   298                                                       def test6(square):
+   299                                                           test = True
+   300                                           
+   301                                                           # x_ = square.x - x
+   302                                                           # y_ = square.y - y
+   303                                                           if not (square.x - x) == 0:
+   304                                                               xnum = (square.x - x) / abs(square.x - x)
+   305                                                               if not (square.y - y) == 0:
+   306                                                                   ynum = (square.y - y) / abs(square.y - y)
+   307                                                               else:
+   308                                                                   ynum = 0
+   309                                                           else:
+   310                                                               xnum = 0
+   311                                                               ynum = (square.y - y) / abs(square.y - y)
+   312                                           
+   313                                                           if not abs(square.x - x) == 0:
+   314                                                               num = abs(square.x - x)
+   315                                                           else:
+   316                                                               num = abs(square.y - y)
+   317                                                           for number in xrange(1, num):
+   318                                                               if not b[x + xnum * number][y + ynum * number].image == 0:
+   319                                                                   test = False
+   320                                                           return test and not square == 0 and (square.image == 0 or not square.color == color)
+   321                                           
+   322      1684      3893119   2311.8     27.4              numbers = filter(test6, List)
+   323                                           
+   324      1684        25696     15.3      0.2              map(append_SQ, [p_m] * len(numbers), numbers)
+   325                                           
+   326      1684        17464     10.4      0.1              self.p_m = p_m
+   327                                           
+   328                                                   #==================================================================================
+   329                                                   #For King
+   330                                                   #==================================================================================
+   331     28628       278812      9.7      2.0          elif self.rule_num == 6:
+   332      1684        15950      9.5      0.1              p_m = []
+   333      1684        16691      9.9      0.1              x = self.x
+   334      1684        16573      9.8      0.1              y = self.y
+   335      1684        16171      9.6      0.1              b = board.b
+   336      1684        16191      9.6      0.1              color = self.color
+   337                                                       #[-1, -1, -1, 0, 0, 1, 1, 1]
+   338                                                       #[-1, 0, 1, -1, 1, -1, 0, 1]
+   339                                           
+   340      1684        16091      9.6      0.1              List = []
+   341                                           
+   342      1684        22434     13.3      0.2              map(func.append_6, [List] * 8, [x] * 8, [y] * 8, [b] * 8,
+   343      1684        67777     40.2      0.5                  [-1, -1, -1, 0, 0, 1, 1, 1], [-1, 0, 1, -1, 1, -1, 0, 1], [color] * 8)
+   344                                           
+   345      1684        78403     46.6      0.6              numbers = filter(KingFilter, List)
+   346                                           
+   347      1684        22687     13.5      0.2              map(appendKing, [p_m] * len(numbers), numbers)
+   348                                           
+   349      1684        16329      9.7      0.1              self.p_m = p_m
+
+Total time: 1.82417 s
+File: Square.py
+Function: test6 at line 297
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   297                                                       @profile
+   298                                                       def test6(square):
+   299     35364       122618      3.5      6.7                  test = True
+   300                                           
+   301                                                           # x_ = square.x - x
+   302                                                           # y_ = square.y - y
+   303     35364       133938      3.8      7.3                  if not (square.x - x) == 0:
+   304     23576       101654      4.3      5.6                      xnum = (square.x - x) / abs(square.x - x)
+   305     23576        86237      3.7      4.7                      if not (square.y - y) == 0:
+   306     11788        49547      4.2      2.7                          ynum = (square.y - y) / abs(square.y - y)
+   307                                                               else:
+   308     11788        39146      3.3      2.1                          ynum = 0
+   309                                                           else:
+   310     11788        39130      3.3      2.1                      xnum = 0
+   311     11788        51144      4.3      2.8                      ynum = (square.y - y) / abs(square.y - y)
+   312                                           
+   313     35364       135729      3.8      7.4                  if not abs(square.x - x) == 0:
+   314     23576        90069      3.8      4.9                      num = abs(square.x - x)
+   315                                                           else:
+   316     11788        44383      3.8      2.4                      num = abs(square.y - y)
+   317    101040       389479      3.9     21.4                  for number in xrange(1, num):
+   318     65676       289064      4.4     15.8                      if not b[x + xnum * number][y + ynum * number].image == 0:
+   319     34707       121334      3.5      6.7                          test = False
+   320     35364       130700      3.7      7.2                  return test and not square == 0 and (square.image == 0 or not square.color == color)
+

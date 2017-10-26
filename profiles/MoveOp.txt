@@ -1,0 +1,155 @@
+Timer unit: 1e-06 s
+
+Total time: 7.60069 s
+File: Functions.py
+Function: check at line 18
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    18                                           @profile
+    19                                           def check(board, b1, color, num, c2, list_, level, screen):#, fastfast,_
+    20                                               ##    print ":)", LIST[1]
+    21                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    22                                               #Display The board
+    23                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    24                                               #b1.show(screen)
+    25                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    26                                               #Makes a new board
+    27                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    28                                               # b2 = create_b(board)
+    29                                               # map(Square.Square.check, b2.array_square_Squares, [b2] * len(b2.array_square_Squares))
+    30                                           
+    31                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    32                                               #Makes the Moves
+    33                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    34        21          128      6.1      0.0      moves = []
+    35        21          115      5.5      0.0      def test(sq):
+    36                                                   return sq.str_color == color and not sq.array_coordinate_Possible_Moves == []
+    37                                           
+    38        21          100      4.8      0.0      def checkextend(sq):
+    39                                                   list.extend(moves, map(Move.Move, [sq.coordinate_location] * len(sq.array_coordinate_Possible_Moves),
+    40                                                                     sq.array_coordinate_Possible_Moves, [board] * len(sq.array_coordinate_Possible_Moves),
+    41                                                                     [color] * len(sq.array_coordinate_Possible_Moves)))
+    42                                               # extend = list.extend
+    43                                               # for sq in board.array_square_Squares:
+    44                                               #     if sq.str_color == color:
+    45                                               #         if not sq.array_coordinate_Possible_Moves == []:
+    46                                               #             # for loc in sq.array_coordinate_Possible_Moves:
+    47                                               #             #     moves.append(Move.Move(sq.loc, loc, board, color))
+    48                                               #             length = len(sq.array_coordinate_Possible_Moves)
+    49                                               #             extend(moves, map(Move.Move, [sq.coordinate_location] * length, sq.array_coordinate_Possible_Moves, [board] * length, [color] * length))
+    50        21         2975    141.7      0.0      array_square_SQ = filter(test, board.array_square_Squares)
+    51        21      4031097 191957.0     53.0      map(checkextend, array_square_SQ)
+    52                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    53                                               #For fast Mode(non functional)
+    54                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    55                                               # if fast_:
+    56                                               #     pass
+    57                                                   # if num == level:
+    58                                                   #     del_list = []
+    59                                                   #     for move in moves:
+    60                                                   #         move.__check__(b2, b1, c2, screen)
+    61                                                   #         if move.min == 1000:
+    62                                                   #             del_list.append(move)
+    63                                                   #     for move in del_list:
+    64                                                   #         moves.remove(move)
+    65                                                   # nmoves = []
+    66                                                   # _moves = moves
+    67                                                   # for i in xrange(0, 2):
+    68                                                   #     __best__ = _moves[0]
+    69                                                   #     for move in _moves:
+    70                                                   #         if move.score > __best__.score:
+    71                                                   #             __best__ = move
+    72                                                   #     nmoves.append(__best__)
+    73                                                   #     _moves.remove(__best__)
+    74                                                   # moves = nmoves
+    75                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    76                                               #Has the moves Check
+    77                                               #Add Web Check Here
+    78                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    79                                               # elif not fast_:
+    80        21          138      6.6      0.0      check = Move.Move.check
+    81        21          111      5.3      0.0      num_ = len(moves)
+    82        21          196      9.3      0.0      map(check, moves, [board] * num_, [b1] * num_, [num] * num_,
+    83        21          146      7.0      0.0          [c2] * num_, [[list_[1], moves]] * num_,
+    84        21      3565550 169788.1     46.9          [level] * num_, [screen] * num_)  # [fast] * num_,, [fast_] * num_
+    85                                                   # for move in moves:
+    86                                                   #     check(move, board, b1, num, c2, [list_[1], moves], fast, level, screen, fast_)
+    87                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    88                                               #returns the moves it has made. 
+    89                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    90        21          139      6.6      0.0      return moves
+
+Total time: 3.94683 s
+File: Move.py
+Function: __init__ at line 16
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    16                                               @profile
+    17                                               def __init__(self, loc, target, board, color, movestring = ''):
+    18                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    19                                                   #MAking Inital Atributes
+    20                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    21       420         2124      5.1      0.1          if movestring == '':
+    22                                                       #print ":("
+    23       420         2050      4.9      0.1              self.loc = loc
+    24       420         1737      4.1      0.0              self.tar = target
+    25       420         1797      4.3      0.0              self.color = color
+    26                                                   else:
+    27                                                       #print ":)"
+    28                                                       string = movestring.split('|')
+    29                                                       self.color = string[0]
+    30                                                       self.loc = [int(y) for y in string[1].split(',')]
+    31                                                       self.tar = [int(y) for y in string[2].split(',')]
+    32                                                       board = Board.Board('pictures/chess2.jpg', [0, 0], 'b1')
+    33                                                       board.FromString(string[3])
+    34                                                       #print self.loc, self.tar
+    35       420         1764      4.2      0.0          self.score = 0
+    36       420         1829      4.4      0.0          self.moves = []
+    37       420         2814      6.7      0.1          self.s_avg = 0
+    38       420         1792      4.3      0.0          self.s_min = 0
+    39       420         1795      4.3      0.0          self.s_max = 0
+    40       420         1800      4.3      0.0          self.s_total = 0
+    41       420         1774      4.2      0.0          self.av = 0
+    42       420         1779      4.2      0.0          self.av_ = 0
+    43       420         1769      4.2      0.0          self.tarsq = 0
+    44       420         1796      4.3      0.0          self.locsq = 0
+    45       420         1773      4.2      0.0          self.min = 0
+    46       420         1893      4.5      0.0          self.max = 0
+    47       420         1811      4.3      0.0          self.min_ = 0
+    48       420         1803      4.3      0.0          self.max_ = 0
+    49       420         1777      4.2      0.0          self.int_Rule_Num = 0
+    50                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    51                                                   #Making Squares Of origanal Location
+    52                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    53       420       504311   1200.7     12.8          b2 = Functions.create_b(board)
+    54                                                   #print self.tar, self.loc
+    55       420        84523    201.2      2.1          map(self.sort, b2.array_square_Squares)
+    56                                                   # for sq in b2.array_square_Squares:
+    57                                                   #     #print "~", sq.loc
+    58                                                   #     if sq.coordinate_location == self.tar:
+    59                                                   #         self.tarsq = sq
+    60                                                   #     if sq.coordinate_location == self.loc:
+    61                                                   #         self.locsq = sq
+    62                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    63                                                   #Setting Atributes
+    64                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    65       420         2155      5.1      0.1          if not self.tarsq == 0:
+    66                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    67                                                       #Sets self.rule num to the rule num of
+    68                                                       #the rarget Square so it can be used later
+    69                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    70       420         1880      4.5      0.0              self.int_Rule_Num = self.tarsq.int_Rule_Num
+    71                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    72                                                       #sets Move's Score
+    73                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    74       420         4421     10.5      0.1              self.score = Functions.rulenum_to_score(self.tarsq.int_Rule_Num)
+    75                                                       #print self.score
+    76                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    77                                                       #Moves the move
+    78                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    79                                                       #print self.locsq
+    80       420        66390    158.1      1.7              Functions.move_(b2, self.locsq.str_Name, self.tarsq.str_Name)
+    81       420      3247474   7732.1     82.3              map(Square.Square.check, b2.array_square_Squares, [b2] * len(b2.array_square_Squares))
+

@@ -1,0 +1,23 @@
+Timer unit: 1e-06 s
+
+Total time: 0.702991 s
+File: Square.py
+Function: test6 at line 255
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   255                                                       @profile
+   256                                                       def test6(square):
+   257                                                           # xnum = (square.x - x) / abs(square.x - x)
+   258                                                           # ynum = (square.y - y) / abs(square.y - y)
+   259     23576        81044      3.4     11.5                  test = True
+   260     23576        95048      4.0     13.5                  if not abs(square.x - x) == 0:
+   261     23576        90710      3.8     12.9                      num = abs(square.x - x)
+   262                                                           else:
+   263                                                               num = abs(square.y - y)
+   264     27168       123760      4.6     17.6                  for number in xrange(1, num):
+   265     18808       124878      6.6     17.8                      if not b[x + (square.x - x) / abs(square.x - x) * number][y + (square.y - y) / abs(square.y - y) * number].image == 0:
+   266     15216        50940      3.3      7.2                          test = False
+   267     15216        48999      3.2      7.0                          break
+   268     23576        87612      3.7     12.5                  return test and not square == 0 and (square.image == 0 or not square.color == color)
+

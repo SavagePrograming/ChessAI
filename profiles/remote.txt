@@ -1,0 +1,41 @@
+Timer unit: 1e-06 s
+
+Total time: 23.0167 s
+File: Functions.py
+Function: remote_check at line 86
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    86                                           @profile
+    87                                           def remote_check(board, color, num, c2, list_, level):
+    88                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    89                                               #Makes a new board
+    90                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    91                                               # b2 = create_b(board)
+    92                                               # for sq in b2.array_square_Squares:
+    93                                               #     sq.check()
+    94                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    95                                               #Makes the Moves
+    96                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    97        39          216      5.5      0.0      moves = []
+    98        39          177      4.5      0.0      extend = list.extend
+    99      2535         9500      3.7      0.0      for sq in board.array_square_Squares:
+   100      2496        11715      4.7      0.1          if sq.str_color == color:
+   101       624         5552      8.9      0.0              if not sq.array_coordinate_Possible_Moves == []:
+   102                                                           # for loc in sq.array_coordinate_Possible_Moves:
+   103                                                           #     moves.append(Move.Move(sq.loc, loc, board, color))
+   104       446         3423      7.7      0.0                  length = len(sq.array_coordinate_Possible_Moves)
+   105       446     11881474  26640.1     51.6                  extend(moves, map(Move.Move, [sq.coordinate_location] * length, sq.array_coordinate_Possible_Moves, [board] * length, [color] * length))
+   106                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   107                                               #Has the moves Check
+   108                                               #Add Web Check Here
+   109                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   110        39          239      6.1      0.0      Remote_check = Move.Move.remote_check
+   111                                           
+   112       877        10804     12.3      0.0      for move in moves:
+   113       838     11093462  13238.0     48.2          Remote_check(move, board, num, c2, [list_[1], moves], level)
+   114                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   115                                               #returns the moves it has made.
+   116                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   117        39          123      3.2      0.0      return moves
+

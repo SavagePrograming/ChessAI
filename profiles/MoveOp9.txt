@@ -1,0 +1,125 @@
+Timer unit: 1e-06 s
+
+Total time: 7.25115 s
+File: Move.py
+Function: check at line 205
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   205                                               @profile
+   206                                               def check(self, b2, b1, num, c2, LIST, level, screen):#fast_, fast
+   207                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   208                                                   #This is likely the most inportant function in this game.
+   209                                                   #Because it is the scource of the AI. Tagicaly I am
+   210                                                   #commenting this years after it was written, or mabey just
+   211                                                   #a year, anyways, beacuase i can not remeber what everything does
+   212                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   213                                           
+   214                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   215                                                   #prepares variables
+   216                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   217       420         2146      5.1      0.0          num = num - 1
+   218       420         1951      4.6      0.0          color = 0
+   219                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   220                                                   #Creates New Board, deleting the old on in the process(prevents Mem Leak)
+   221                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   222       420       481891   1147.4      6.6          b2 = Functions.create_b(b2)
+   223                                           
+   224       420        66684    158.8      0.9          Functions.move_(b2, self.locsq.str_Name, self.tarsq.str_Name)
+   225                                           
+   226       420      3081298   7336.4     42.5          map(Square.Square.check, b2.array_square_Squares, [b2] * len(b2.array_square_Squares))
+   227                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   228                                                   #Sets color?
+   229                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   230       420         2381      5.7      0.0          if self.color == 'b':
+   231       400         1837      4.6      0.0              color = 'w'
+   232        20           94      4.7      0.0          elif self.color == 'w':
+   233        20           91      4.5      0.0              color = 'b'
+   234                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   235                                                   #Check! :
+   236                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   237       420         1954      4.7      0.0          II = False
+   238                                                   ##        print type(LIST), LIST[0]
+   239                                                   # delet = self.delet
+   240                                           
+   241       420         2175      5.2      0.0          def test(t):
+   242                                                       return t == LIST[1]
+   243                                                   # delet = Move.delet
+   244                                           
+   245       420         2229      5.3      0.0          if not self.color == c2 and self.score == 1000:
+   246                                                       stuff = filter(test, LIST[0])
+   247                                                       II = not len(stuff) == []
+   248                                                       map(LIST.remove, stuff)
+   249                                           
+   250                                                   # if not self.color == c2:
+   251                                                   #     if self.score == 1000:
+   252                                                   #         for t in LIST[0]:
+   253                                                   #             if t == LIST[1]:
+   254                                                   #                 LIST.remove(t)  # , LIST)
+   255                                                   #                 II = True
+   256                                                   #                 break
+   257                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   258                                                   #Continues recursivly, unless the end is reaced, or the king is checked,
+   259                                                   #or ?the color failed to be set?, I don't know why that is there.
+   260                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   261       420         2001      4.8      0.0          if not num == 0 and not color == 0 and not II:
+   262        20      3584617 179230.9     49.4              self.moves = Functions.check(b2, b1, color, num, c2, LIST, level, screen,)#fast, fast_)
+   263                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   264                                                   #If the end is reach sets the Min, Max and Average to The score
+   265                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   266       420         2023      4.8      0.0          if num == 0:
+   267       400         2451      6.1      0.0              self.min = self.max = self.av = self.score
+   268                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   269                                                   #Otherwise it calulates them
+   270                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   271                                                   else:
+   272                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   273                                                       #Calculating Average
+   274                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   275        20           98      4.9      0.0              av = 0
+   276        20           99      5.0      0.0              test = 0
+   277        20           90      4.5      0.0              t2 = 0
+   278        20          102      5.1      0.0              test2 = 0
+   279        20           89      4.5      0.0              t3 = 0
+   280       420         1983      4.7      0.0              for move in self.moves:
+   281       400         2061      5.2      0.0                  av += move.av
+   282       400         1939      4.8      0.0                  if move.max > test:
+   283                                                               test = move.max
+   284       400         1950      4.9      0.0                  if move.score > t2:
+   285                                                               t2 = move.score
+   286       400         1885      4.7      0.0                  if move.min < test:
+   287                                                               test2 = move.min
+   288       400         1857      4.6      0.0                  if move.score < t2:
+   289                                                               t3 = move.score
+   290        20          106      5.3      0.0              self.min = self.score - test
+   291        20          119      6.0      0.0              self.min_ = -t2
+   292        20          718     35.9      0.0              self.av_ = av = float(av) / func.length(self.moves) + 1
+   293        20          116      5.8      0.0              self.av = self.score - av
+   294        20          102      5.1      0.0              self.max = self.score - test2
+   295        20          103      5.2      0.0              self.max_ = -t3
+   296                                                       #print self.av
+   297                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   298                                                       #Calculating Minimum
+   299                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   300                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   301                                                       #Calculating Maximum
+   302                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   303                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   304                                                       #Prevents king from moving into check
+   305                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   306                                           
+   307                                                       #remove = list.remove
+   308        20           94      4.7      0.0              if self.color == c2:
+   309                                           
+   310                                           
+   311        20         1819     91.0      0.0                  map(remover, self.moves)
+   312                                           
+   313                                                           # for move in self.moves:
+   314                                                           #     for j in move.moves:
+   315                                                           #         if j.min_ == -1000:
+   316                                                           #             remove(move.moves, j)
+   317                                                       else:
+   318                                                           # moves_ = self.moves
+   319                                                           moves_ = filter(kingtest, self.moves)
+   320                                                           map(self.moves.remove, moves_)
+

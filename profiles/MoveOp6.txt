@@ -1,0 +1,85 @@
+
+Timer unit: 1e-06 s
+
+Total time: 7.37205 s
+File: Functions.py
+Function: check at line 18
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    18                                           @profile
+    19                                           def check(board, b1, color, num, c2, list_, level, screen):#, fastfast,_
+    20                                               ##    print ":)", LIST[1]
+    21                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    22                                               #Display The board
+    23                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    24                                               #b1.show(screen)
+    25                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    26                                               #Makes a new board
+    27                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    28                                               # b2 = create_b(board)
+    29                                               # map(Square.Square.check, b2.array_square_Squares, [b2] * len(b2.array_square_Squares))
+    30                                           
+    31                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    32                                               #Makes the Moves
+    33                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    34        21          136      6.5      0.0      moves = []
+    35        21          109      5.2      0.0      def test(sq):
+    36                                                   return sq.str_color == color and not sq.array_coordinate_Possible_Moves == []
+    37                                           
+    38        21          101      4.8      0.0      def checkextend(sq):
+    39                                                   moves.extend(map(Move.Move, [sq.coordinate_location] * len(sq.array_coordinate_Possible_Moves),
+    40                                                                    sq.array_coordinate_Possible_Moves, [board] * len(sq.array_coordinate_Possible_Moves),
+    41                                                                    [color] * len(sq.array_coordinate_Possible_Moves)))
+    42                                               # extend = list.extend
+    43                                               # for sq in board.array_square_Squares:
+    44                                               #     if sq.str_color == color:
+    45                                               #         if not sq.array_coordinate_Possible_Moves == []:
+    46                                               #             # for loc in sq.array_coordinate_Possible_Moves:
+    47                                               #             #     moves.append(Move.Move(sq.loc, loc, board, color))
+    48                                               #             length = len(sq.array_coordinate_Possible_Moves)
+    49                                               #             extend(moves, map(Move.Move, [sq.coordinate_location] * length, sq.array_coordinate_Possible_Moves,
+    50                                               #  [board] * length, [color] * length))
+    51                                           
+    52        21         2537    120.8      0.0      array_square_SQ = filter(test, board.array_square_Squares)
+    53        21      3822499 182023.8     51.9      map(checkextend, array_square_SQ)
+    54                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    55                                               #For fast Mode(non functional)
+    56                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    57                                               # if fast_:
+    58                                               #     pass
+    59                                               # if num == level:
+    60                                               #     del_list = []
+    61                                               #     for move in moves:
+    62                                               #         move.__check__(b2, b1, c2, screen)
+    63                                               #         if move.min == 1000:
+    64                                               #             del_list.append(move)
+    65                                               #     for move in del_list:
+    66                                               #         moves.remove(move)
+    67                                               # nmoves = []
+    68                                               # _moves = moves
+    69                                               # for i in xrange(0, 2):
+    70                                               #     __best__ = _moves[0]
+    71                                               #     for move in _moves:
+    72                                               #         if move.score > __best__.score:
+    73                                               #             __best__ = move
+    74                                               #     nmoves.append(__best__)
+    75                                               #     _moves.remove(__best__)
+    76                                               # moves = nmoves
+    77                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    78                                               #Has the moves Check
+    79                                               #Add Web Check Here
+    80                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    81                                               # elif not fast_:
+    82                                               #check = Move.Move.check
+    83                                               #num_ = len(moves)
+    84        21          279     13.3      0.0      map(Move.Move.check, moves, [board] * len(moves), [b1] * len(moves), [num] * len(moves),
+    85        21          153      7.3      0.0          [c2] * len(moves), [[list_[1], moves]] * len(moves),
+    86        21      3546105 168862.1     48.1          [level] * len(moves), [screen] * len(moves))  # [fast] * len(moves),, [fast_] * len(moves)
+    87                                                   # for move in moves:
+    88                                                   #     check(move, board, b1, num, c2, [list_[1], moves], fast, level, screen, fast_)
+    89                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    90                                               #returns the moves it has made. 
+    91                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    92        21          131      6.2      0.0      return moves
+

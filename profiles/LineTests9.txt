@@ -1,0 +1,73 @@
+Timer unit: 1e-06 s
+
+Total time: 8.60564 s
+File: Functions.py
+Function: check at line 17
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    17                                           @profile
+    18                                           def check(board, b1, color, num, c2, list_, fast, level, screen, fast_):
+    19                                               ##    print ":)", LIST[1]
+    20                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    21                                               #Display The board
+    22                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    23                                               #b1.show(screen)
+    24                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    25                                               #Makes a new board
+    26                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    27                                               # b2 = create_b(board)
+    28                                               # map(Square.Square.check, b2.sq, [b2] * len(b2.sq))
+    29                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    30                                               #Makes the Moves
+    31                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    32        21           96      4.6      0.0      moves = []
+    33        21           86      4.1      0.0      extend = list.extend
+    34      1365         4749      3.5      0.1      for sq in board.sq:
+    35      1344         4954      3.7      0.1          if sq.color == color:
+    36       336         1420      4.2      0.0              if not sq.p_m == []:
+    37                                                           # for loc in sq.p_m:
+    38                                                           #     moves.append(Move.Move(sq.loc, loc, board, color))
+    39       210          835      4.0      0.0                  length = len(sq.p_m)
+    40       210      4507530  21464.4     52.4                  extend(moves, map(Move.Move, [sq.location] * length, sq.p_m, [board] * length, [color] * length))
+    41                                           
+    42                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    43                                               #For fast Mode(non functional)
+    44                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    45        21           70      3.3      0.0      if fast_:
+    46                                                   pass
+    47                                                   # if num == level:
+    48                                                   #     del_list = []
+    49                                                   #     for move in moves:
+    50                                                   #         move.__check__(b2, b1, c2, screen)
+    51                                                   #         if move.min == 1000:
+    52                                                   #             del_list.append(move)
+    53                                                   #     for move in del_list:
+    54                                                   #         moves.remove(move)
+    55                                                   # nmoves = []
+    56                                                   # _moves = moves
+    57                                                   # for i in xrange(0, 2):
+    58                                                   #     __best__ = _moves[0]
+    59                                                   #     for move in _moves:
+    60                                                   #         if move.score > __best__.score:
+    61                                                   #             __best__ = move
+    62                                                   #     nmoves.append(__best__)
+    63                                                   #     _moves.remove(__best__)
+    64                                                   # moves = nmoves
+    65                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    66                                               #Has the moves Check
+    67                                               #Add Web Check Here
+    68                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    69        21           71      3.4      0.0      elif not fast_:
+    70        21           98      4.7      0.0          check = Move.Move.check
+    71        21           78      3.7      0.0          num_ = len(moves)
+    72        21          154      7.3      0.0          map(check, moves, [board] * num_, [b1] * num_, [num] * num_,
+    73        21          136      6.5      0.0              [c2] * num_, [[list_[1], moves]] * num_, [fast] * num_,
+    74        21      4085246 194535.5     47.5              [level] * num_, [screen] * num_, [fast_] * num_)
+    75                                                   # for move in moves:
+    76                                                   #     check(move, board, b1, num, c2, [list_[1], moves], fast, level, screen, fast_)
+    77                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    78                                               #returns the moves it has made. 
+    79                                               ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    80        21          117      5.6      0.0      return moves
+

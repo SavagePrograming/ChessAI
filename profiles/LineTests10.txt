@@ -1,0 +1,74 @@
+Timer unit: 1e-06 s
+
+Total time: 4.74552 s
+File: Move.py
+Function: __init__ at line 16
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    16                                               @profile
+    17                                               def __init__(self, loc, target, board, color, movestring = ''):
+    18                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    19                                                   #MAking Inital Atributes
+    20                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    21       420         2166      5.2      0.0          if movestring == '':
+    22                                                       #print ":("
+    23       420         1992      4.7      0.0              self.loc = loc
+    24       420         1751      4.2      0.0              self.tar = target
+    25       420         1827      4.3      0.0              self.color = color
+    26                                                   else:
+    27                                                       #print ":)"
+    28                                                       string = movestring.split('|')
+    29                                                       self.color = string[0]
+    30                                                       self.loc = [int(y) for y in string[1].split(',')]
+    31                                                       self.tar = [int(y) for y in string[2].split(',')]
+    32                                                       board = Board.Board('pictures/chess2.jpg', [0, 0], 'b1')
+    33                                                       board.FromString(string[3])
+    34                                                       #print self.loc, self.tar
+    35       420         1793      4.3      0.0          self.score = 0
+    36       420         1794      4.3      0.0          self.moves = []
+    37       420         2318      5.5      0.0          self.s_avg = 0
+    38       420         1806      4.3      0.0          self.s_min = 0
+    39       420         1789      4.3      0.0          self.s_max = 0
+    40       420         1810      4.3      0.0          self.s_total = 0
+    41       420         1814      4.3      0.0          self.av = 0
+    42       420         1764      4.2      0.0          self.av_ = 0
+    43       420         2187      5.2      0.0          self.tarsq = 0
+    44       420         1771      4.2      0.0          self.locsq = 0
+    45       420         1761      4.2      0.0          self.min = 0
+    46       420         1899      4.5      0.0          self.max = 0
+    47       420         1788      4.3      0.0          self.min_ = 0
+    48       420         1810      4.3      0.0          self.max_ = 0
+    49       420         1816      4.3      0.0          self.rule_num = 0
+    50                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    51                                                   #Making Squares Of origanal Location
+    52                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    53       420       493304   1174.5     10.4          b2 = Functions.create_b(board)
+    54                                                   #print self.tar, self.loc
+    55     27300       113587      4.2      2.4          for sq in b2.sq:
+    56                                                       #print "~", sq.loc
+    57     26880       122122      4.5      2.6              if sq.location== self.tar:
+    58       420         1903      4.5      0.0                  self.tarsq = sq
+    59     26880       122432      4.6      2.6              if sq.location== self.loc:
+    60       420         1893      4.5      0.0                  self.locsq = sq
+    61                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    62                                                   #Setting Atributes
+    63                                                   ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    64       420         2199      5.2      0.0          if not self.tarsq == 0 :
+    65                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    66                                                       #Sets self.rule num to the rule num of
+    67                                                       #the rarget Square so it can be used later
+    68                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    69       420         1945      4.6      0.0              self.rule_num = self.tarsq.rule_num
+    70                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    71                                                       #sets Move's Score
+    72                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    73       420         4417     10.5      0.1              self.score = Functions.rulenum_to_score(self.tarsq.rule_num)
+    74                                                       #print self.score
+    75                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    76                                                       #Moves the move
+    77                                                       ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    78                                                       #print self.locsq
+    79       420        68006    161.9      1.4              Functions.move_(b2, self.locsq.name, self.tarsq.name)
+    80       420      3778058   8995.4     79.6              map(Square.Square.check, b2.sq, [b2] * len(b2.sq))
+
